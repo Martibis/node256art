@@ -10,39 +10,46 @@ npm install --save 256art
 const TwoFiveSix = require("256art");
 ```
 
-# EXAMPLES
+# Examples
+
+Get metadata for one piece
 
 ```
-//GET JSON WITH ALL DATA FOR ONE PIECE
 let json = TwoFiveSix.getJsonFromId(1);
 ```
 
+Get metadata in base64 format for one piece
+
 ```
-//GET JSON IN BASE64 FORMAT FOR ONE PIECE
 let base64 = TwoFiveSix.getBase64JsonFromId(1);
 ```
 
-```
-//GET A SEED FROM FIRST FOUR COLORS IN ONE PIECE
-let seedFromColors = TwoFiveSix.getSeedFromFirstFourColorsForId(1);
-```
+Get a seed for pseudorandomization by combining the RGB values from the first color in a piece
 
 ```
-//GET ALL BLOCKCOLORS AS HEX FOR ONE PIECE
+let seedFromColors = TwoFiveSix.getSeedFromFirstColorForId(1);
+```
+
+Get all block colors for one piece (hex)
+
+```
 let blockColors = TwoFiveSix.getBlockColorsForId(1);
 ```
 
+Get background color for one piece (hex)
+
 ```
-//GET BACKGROUND COLOR AS HEX FOR ONE PIECE
 let bgColor = TwoFiveSix.getBackgroundColorForId(1);
 ```
 
+Get border color for one piece (hex)
+
 ```
-//GET BORDER COLOR AS HEX FOR ONE PIECE
 let borderColor = TwoFiveSix.getBorderColorForId(1);
 ```
 
+Get total amount of blocks for one piece
+
 ```
-//GET TOTALBLOCKS FOR ONE PIECE
 let totalBlocks = TwoFiveSix.getTotalBlocksForId(1);
 ```
