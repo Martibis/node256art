@@ -23,8 +23,8 @@ let base64 = TwoFiveSix.getBase64JsonFromId(1);
 ```
 
 ```
-//GET A SEED FROM ALL COLORS IN ONE PIECE
-let seedFromColors = TwoFiveSix.getSeedFromColorsForId(1);
+//GET A SEED FROM FIRST FOUR COLORS IN ONE PIECE
+let seedFromColors = TwoFiveSix.getSeedFromFirstFourColorsForId(1);
 ```
 
 ```
