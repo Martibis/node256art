@@ -4,11 +4,12 @@ const path = require("path");
 const TwoFiveSix = {
   getJsonFromId: getJsonFromId,
   getBase64JsonFromId: getBase64JsonFromId,
-  getSeedFromColorsForId: getSeedFromColorsForId,
+  getSeedFromFirstColorForId: getSeedFromFirstColorForId,
   getBlockColorsForId: getBlockColorsForId,
   getBackgroundColorForId: getBackgroundColorForId,
   getBorderColorForId: getBorderColorForId,
   getTotalBlocksForId: getTotalBlocksForId,
+  hexToRgb: hexToRgb,
 };
 
 module.exports = TwoFiveSix;
@@ -85,7 +86,7 @@ function getBase64JsonFromId(id) {
   return base64data;
 }
 
-function getSeedFromColorsForId(id) {
+function getSeedFromFirstColorForId(id) {
   let rawJson = fs.readFileSync(
     path.resolve(__dirname, "256art/" + id.toString() + ".json")
   );
@@ -96,6 +97,7 @@ function getSeedFromColorsForId(id) {
       if (json.attributes[i]["trait_type"] === "block-color") {
         let rgb = hexToRgb(json.attributes[i]["value"]);
         seed += rgb.r.toString() + rgb.g.toString() + rgb.b.toString();
+        break;
       }
     }
   }
