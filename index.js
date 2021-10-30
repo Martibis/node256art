@@ -4,7 +4,8 @@ const path = require("path");
 const TwoFiveSix = {
   getJsonFromId: getJsonFromId,
   getBase64JsonFromId: getBase64JsonFromId,
-  getSeedFromFirstColorForId: getSeedFromFirstColorForId,
+  getSeedsFromAllBlockColorsForId: getSeedsFromAllBlockColorsForId,
+  getSeedFromFirstBlockColorForId: getSeedFromFirstBlockColorForId,
   getBlockColorsForId: getBlockColorsForId,
   getBackgroundColorForId: getBackgroundColorForId,
   getBorderColorForId: getBorderColorForId,
@@ -86,7 +87,7 @@ function getBase64JsonFromId(id) {
   return base64data;
 }
 
-function getSeedFromFirstColorForId(id) {
+function getSeedFromFirstBlockColorForId(id) {
   let rawJson = fs.readFileSync(
     path.resolve(__dirname, "256art/" + id.toString() + ".json")
   );
@@ -102,6 +103,25 @@ function getSeedFromFirstColorForId(id) {
     }
   }
   return parseInt(seed);
+}
+
+function getSeedsFromAllBlockColorsForId(id) {
+  let rawJson = fs.readFileSync(
+    path.resolve(__dirname, "256art/" + id.toString() + ".json")
+  );
+  let json = JSON.parse(rawJson);
+  let seeds = [];
+  for (let i = 0; i < json.attributes.length; i++) {
+    if ("trait_type" in json.attributes[i]) {
+      if (json.attributes[i]["trait_type"] === "block-color") {
+        let rgb = hexToRgb(json.attributes[i]["value"]);
+        let seed = rgb.r.toString() + rgb.g.toString() + rgb.b.toString();
+        seed = parseInt(seed);
+        seeds.push(seed);
+      }
+    }
+  }
+  return seeds;
 }
 
 function getBlockColorsForId(id) {

@@ -30,6 +30,12 @@ Get a seed for pseudorandomization by combining the RGB values from the first co
 let seedFromColors = TwoFiveSix.getSeedFromFirstColorForId(1);
 ```
 
+Get all block colors as seeds by combining the RGB value from each color in a piece
+
+```
+let seedsFromColors = TwoFiveSix.getSeedsFromAllBlockColorsForId(1);
+```
+
 Get all block colors for one piece (hex)
 
 ```
