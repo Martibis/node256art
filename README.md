@@ -24,13 +24,7 @@ Get metadata in base64 format for one piece
 let base64 = TwoFiveSix.getBase64JsonFromId(1);
 ```
 
-Get a seed for pseudorandomization by combining the RGB values from the first color in a piece
-
-```
-let seedFromColors = TwoFiveSix.getSeedFromFirstColorForId(1);
-```
-
-Get all block colors as seeds by combining the RGB value from each color in a piece
+Get all block colors as seeds by converting hex to decimal value from each color in a piece
 
 ```
 let seedsFromColors = TwoFiveSix.getSeedsFromAllBlockColorsForId(1);

@@ -5,7 +5,6 @@ const TwoFiveSix = {
   getJsonFromId: getJsonFromId,
   getBase64JsonFromId: getBase64JsonFromId,
   getSeedsFromAllBlockColorsForId: getSeedsFromAllBlockColorsForId,
-  getSeedFromFirstBlockColorForId: getSeedFromFirstBlockColorForId,
   getBlockColorsForId: getBlockColorsForId,
   getBackgroundColorForId: getBackgroundColorForId,
   getBorderColorForId: getBorderColorForId,
@@ -87,24 +86,6 @@ function getBase64JsonFromId(id) {
   return base64data;
 }
 
-function getSeedFromFirstBlockColorForId(id) {
-  let rawJson = fs.readFileSync(
-    path.resolve(__dirname, "256art/" + id.toString() + ".json")
-  );
-  let json = JSON.parse(rawJson);
-  let seed = "";
-  for (let i = 0; i < json.attributes.length; i++) {
-    if ("trait_type" in json.attributes[i]) {
-      if (json.attributes[i]["trait_type"] === "block-color") {
-        let rgb = hexToRgb(json.attributes[i]["value"]);
-        seed += rgb.r.toString() + rgb.g.toString() + rgb.b.toString();
-        break;
-      }
-    }
-  }
-  return parseInt(seed);
-}
-
 function getSeedsFromAllBlockColorsForId(id) {
   let rawJson = fs.readFileSync(
     path.resolve(__dirname, "256art/" + id.toString() + ".json")
@@ -114,9 +95,7 @@ function getSeedsFromAllBlockColorsForId(id) {
   for (let i = 0; i < json.attributes.length; i++) {
     if ("trait_type" in json.attributes[i]) {
       if (json.attributes[i]["trait_type"] === "block-color") {
-        let rgb = hexToRgb(json.attributes[i]["value"]);
-        let seed = rgb.r.toString() + rgb.g.toString() + rgb.b.toString();
-        seed = parseInt(seed);
+        let seed = parseInt(json.attributes[i]["value"].split("#")[1], 16);
         seeds.push(seed);
       }
     }
