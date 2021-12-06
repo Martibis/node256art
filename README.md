@@ -1,6 +1,6 @@
 # 256ART
 
-Gives generative artists easy access to data in 256ART pieces.
+Gives generative artists easy access to data in 256ART pieces in a NodeJS environment.
 
 ```
 npm install --save 256art
