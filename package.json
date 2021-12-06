@@ -1,6 +1,6 @@
 {
   "name": "256art",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A package for artists to easily build on top of 256ART",
   "main": "index.js",
   "scripts": {
