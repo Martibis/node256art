@@ -27,7 +27,7 @@ let base64 = TwoFiveSix.getBase64JsonFromId(1);
 Get all block colors as seeds by converting hex to decimal value from each color in a piece
 
 ```
-let seedsFromColors = TwoFiveSix.getSeedsFromAllBlockColorsForId(1);
+let seedsFromColors = TwoFiveSix.getDecimalFromHexForAllColorsForId(1);
 ```
 
 Get all block colors for one piece (hex)
